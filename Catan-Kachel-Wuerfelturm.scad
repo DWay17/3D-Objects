@@ -26,10 +26,9 @@ tri_h  = 25;
 tri_d2 = tower_d + 30;
 
 // base
-%cylinder(h=base_h, d=base_d, center=true, $fn=6);
+cylinder(h=base_h, d=base_d, center=true, $fn=6);
 
 // border
-%translate([0, 0, base_h/2])
 translate([0, 0, base_h/2])
 difference(){
     union () {
@@ -46,7 +45,7 @@ difference(){
     
 }
 // place_bordes
-%translate([0, 0, base_h/2])
+translate([0, 0, base_h/2])
 difference(){
     for (i = [0:5]){
         rotate(i * 60)
