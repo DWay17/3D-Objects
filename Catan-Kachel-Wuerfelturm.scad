@@ -47,21 +47,24 @@ difference(){
 }
 // place_bordes
 %translate([0, 0, base_h/2])
-linear_extrude(height = border_h)
 difference(){
     for (i = [0:5]){
         rotate(i * 60)
         translate([ (border_d/2 - 0*place_d/2 + 1*border_w), 0, 0])
-        circle(d=place_d + 0 * border_w, $fn=6);
+        cylinder(h = border_h, d=place_d + 0 * border_w, $fn=6);
     }
+    remove_place_outside();
+    difference() {
+        cylinder(h = border_h, d=base_d + place_d, $fn=6);
+        cylinder(h = border_h, d=base_d - 3.45 * border_w, $fn=6);
+    }
+}
+
+module remove_place_outside() {
     for (i = [0:5]){
         rotate(i * 60)
         translate([ (border_d/2 - 0*place_d/2 + 1*border_w), 0, 0])
-        circle(d=place_d - 1 * border_w, $fn=6);
-    }
-    difference() {
-        circle(d=base_d + place_d, $fn=6);
-        circle(d=base_d - 3.45 * border_w, $fn=6);
+        cylinder(h = border_h, d=place_d - 1 * border_w, $fn=6);
     }
 }
 
