@@ -30,18 +30,18 @@ tri_d2 = tower_d + 30;
 
 // border
 %translate([0, 0, base_h/2])
-linear_extrude(height = border_h)
+translate([0, 0, base_h/2])
 difference(){
     union () {
-        circle(d=border_d, $fn=6);
+        cylinder(h=border_h, d=border_d, $fn=6);
     }
     // remove inner to get border
-    circle(d=border_d - border_w,  $fn=6);
+    cylinder(h=border_h, d=border_d - border_w,  $fn=6);
     // remove 6 places
     for (i = [0:5]){
         rotate(i * 60)
         translate([ (border_d/2 - 0*place_d/2 + 1*border_w), 0, 0])
-        circle(d=place_d-0*border_w, $fn=6);
+        cylinder(h=border_h, d=place_d-0*border_w, $fn=6);
     }
     
 }
