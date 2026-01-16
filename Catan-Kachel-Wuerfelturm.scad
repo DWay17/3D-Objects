@@ -30,7 +30,7 @@ cylinder(h=base_h, d=base_d, center=true, $fn=6);
 
 // border
 translate([0, 0, base_h/2])
-linear_extrude(height = border_h)
+rude(height = border_h)
 difference(){
     union () {
         circle(d=border_d, $fn=6);
