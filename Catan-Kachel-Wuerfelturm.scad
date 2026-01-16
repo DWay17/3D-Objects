@@ -26,11 +26,11 @@ tri_h  = 25;
 tri_d2 = tower_d + 30;
 
 // base
-cylinder(h=base_h, d=base_d, center=true, $fn=6);
+%cylinder(h=base_h, d=base_d, center=true, $fn=6);
 
 // border
-translate([0, 0, base_h/2])
-rude(height = border_h)
+%translate([0, 0, base_h/2])
+linear_extrude(height = border_h)
 difference(){
     union () {
         circle(d=border_d, $fn=6);
@@ -46,7 +46,7 @@ difference(){
     
 }
 // place_bordes
-translate([0, 0, base_h/2])
+%translate([0, 0, base_h/2])
 linear_extrude(height = border_h)
 difference(){
     for (i = [0:5]){
@@ -105,18 +105,17 @@ difference(){
         // rutsche
         translate([0, tower_d/2  - rut_h/2 - border_w, rut_h/2 - 0])
         rotate([0, 90, 180])
-        difference(){
+        difference() {
             cube([rut_h,rut_h,rut_b], true);
             translate([-rut_h/2, rut_h/2, 0])
             cylinder(h=rut_b, r=rut_h, center=true);
-               translate([0, 0, border_h])
-    linear_extrude(height = tower_h - border_h)
-    difference()
-    {
-        circle(d=tower_d + 10*border_w, $fn=6);
-        circle(d=tower_d + 0.5 * border_w, $fn=6);    
-    }
-
+            translate([0, 0, border_h])
+            linear_extrude(height = tower_h - border_h)
+            difference()
+            {
+                circle(d=tower_d + 10*border_w, $fn=6);
+                circle(d=tower_d + 0.5 * border_w, $fn=6);    
+            }
         }
         // trichter
         translate([0, 0, tower_h])
