@@ -78,9 +78,7 @@ difference(){
         //linear_extrude(height = tower_h)
         union(){                                        
             difference(){
-                //circle(d=tower_d, $fn=6);
                 cylinder(h=tower_h, d=tower_d, $fn=6);
-                //circle(d=tower_d - border_w, $fn=6);    
                 cylinder(h=tower_h + 3, d=tower_d - border_w, $fn=6);
             }
         }                                               
